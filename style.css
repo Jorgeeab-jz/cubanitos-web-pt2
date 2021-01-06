@@ -6,8 +6,8 @@
 }
 .top-container {
     height: 80px;
-    background: rgba(52, 152, 219,1.0);
-    box-shadow: 0px 0px 30px black;
+    background: rgb(194, 225, 247);
+    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.5);
 }
 .top img {
     height: 75px;
