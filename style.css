@@ -37,6 +37,12 @@
 #combo{
     background: #e74c3c;
 }
+#postres{
+    background: #f39c12;
+}
+#bebidas{
+    background: #3498db;
+}
 .menu-title {
     font-family: 'Staatliches', cursive;
     margin: auto;
