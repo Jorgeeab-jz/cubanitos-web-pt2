@@ -17,6 +17,7 @@
     width: auto;
 }
 .menu {
+    display: none;
     position: relative;
     font-family: 'Nunito', sans-serif;
     margin: auto;
@@ -49,7 +50,7 @@
     margin: auto;
     text-align: center;
     font-size: 45px;
-    margin-top: 80px;
+    margin-top: 50px;
 }
 .accordion-button {
     font-family: 'Staatliches', cursive;
@@ -60,6 +61,7 @@
     box-shadow: inset 0 3px 6px rgba(0,0,0,0.16), 0 4px 6px rgba(0,0,0,0.45);
 }
 .card-img-top {
+    height: auto;
     margin-top: 5px;
 }
 .background {
@@ -97,17 +99,26 @@
     transform: scale(0.9);
 }
 .social-container {
-    margin: auto;
-    text-align: center;
-    width: 40px;
-    display: grid;
-    grid-template-columns: auto;
-    display: inline-block;
     position: absolute;
     left: 25px;
     bottom: 15px;
-    font-size: 40px;
     z-index: 15;
+    display: flex;
+    flex-direction: row;
+    column-gap: 8px;
+}
+.social-container a {
+    margin: auto;
+    text-align: center;
+    font-size: 40px;
+}
+.wpp-number {
+    text-align: start;
+    margin-top: 1.2rem;
+    margin-left: -0.3rem;
+    font-size: 18px;
+    color: #2980b9;
+    font-family: 'Staatliches',sans-serif;
 }
 .social-container a {
     position: relative;
