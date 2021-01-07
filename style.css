@@ -113,7 +113,7 @@
     font-size: 40px;
 }
 .wpp-number {
-    text-align: start;
+    text-align: center;
     margin-top: 1.2rem;
     margin-left: -0.3rem;
     font-size: 18px;
@@ -124,4 +124,21 @@
     position: relative;
     margin: auto;
     text-align: center;
+}
+
+
+
+
+
+
+@media (max-width: 360px) {
+    .social-container{
+        flex-direction: column;
+    }
+    .social-container a {
+        margin-top: -10px;
+    }
+    .wpp-number {
+        margin-top: 0;
+    }
 }
