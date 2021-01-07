@@ -44,6 +44,7 @@
     background: rgba(253, 138, 131, 1);
 }
 .menu-title {
+    color: #2980b9;
     font-family: 'Staatliches', cursive;
     margin: auto;
     text-align: center;
@@ -78,7 +79,7 @@
     z-index: 20;
 }
 #open-cart{
-    color: white;
+    color: #2980b9;
     font-size: 35px;
     text-align: center;
     background: rgb(194, 225, 247);
