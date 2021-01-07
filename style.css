@@ -96,3 +96,21 @@
 #open-cart:active {
     transform: scale(0.9);
 }
+.social-container {
+    margin: auto;
+    text-align: center;
+    width: 40px;
+    display: grid;
+    grid-template-columns: auto;
+    display: inline-block;
+    position: absolute;
+    left: 25px;
+    bottom: 15px;
+    font-size: 40px;
+    z-index: 15;
+}
+.social-container a {
+    position: relative;
+    margin: auto;
+    text-align: center;
+}
