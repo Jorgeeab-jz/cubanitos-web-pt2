@@ -120,7 +120,7 @@ small{
     transform: scale(0.9);
 }
 .social-container {
-    position: absolute;
+    position: fixed;
     left: 25px;
     bottom: 8px;
     z-index: 15;
@@ -148,24 +148,27 @@ small{
     text-align: center;
 }
 .item {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    display: inline-block;
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,0.1);
     display: flex;
     flex-direction: row;
     font-family: 'Staatliches',sans-serif;
 }
-.item-img img{
-    margin-top: 0.6rem;
-    width: 45%;
-    height: auto;
-    border-radius: 5%;
-}
-.item-img {
-    text-align: center;
+.item-info {
+    position: absolute;
+    display: inline-block;
+    position: relative;
+    left: 0;
 }
 .item-price {
     position: absolute;
+    display: inline-block;
     right: 1rem;
-    bottom: 0rem;
     text-align: end;
+    margin-top: 0.6rem;
 }
 .item-price button {
     font-family: sans-serif;
@@ -179,7 +182,11 @@ small{
     outline-style: none;
 }
 .item-price p{
-    margin-top: 1rem;
+    margin-top: 0.45rem;
+}
+.item-input {
+    margin-bottom: -0.6rem;
+    margin-top: 0.6rem;
 }
 .item-input input {
     margin: 0;
@@ -201,7 +208,7 @@ small{
 .item-name {
     margin: auto;
     font-size: 15px;
-    margin-top: 1rem;
+    margin-top: 1.3rem;
     margin-bottom: 0;
 }
 #send-btn {
@@ -222,14 +229,15 @@ small{
     border-top: 1px solid rgba(0,0,0,0.1);
 }
 .total-container h2{
+    font-size: 40px;
     text-align: start;
-    margin-left: 0.5rem;
+    margin-left: 1rem;
 }
 .total-container p {
     position: absolute;
     right: 0.9rem;
     text-align: end;
-    font-size: 20px;
+    font-size: 35px;
 }
 .modal-footer {
     text-align: center;
