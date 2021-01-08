@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- The core Firebase JS SDK is always required and must be listed first -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-app.js"></script>
+
+    <!-- TODO: Add SDKs for Firebase products that you want to use
+     https://firebase.google.com/docs/web/setup#available-libraries -->
+    <script src="https://www.gstatic.com/firebasejs/8.2.2/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.1/firebase-database.js"></script>
     <script src="https://kit.fontawesome.com/6a6f102d22.js" crossorigin="anonymous"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
@@ -12,125 +19,73 @@
 <body>
     <header class="top-container">
         <div class="top">
-            <img src="logo.png" alt="Los Cubanitos 2010">
+            <img src="logo.png" alt="Los Cubanitos 2010"> 
         </div>
     </header>
     <h1 class="menu-title">MENÚ</h1>
     <div class="menu">
-        <div class="accordion accordion-flush" id="accordionFlushExample">
-            <div id="burger" class="accordion-item">
-              <h2 class="accordion-header" id="flush-headingOne">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
-                  Hamburguesas
-                </button>
-              </h2>
-              <div id="flush-collapseOne" class="accordion-collapse collapse row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3" aria-labelledby="flush-headingOne" data-bs-parent="#accordionFlushExample">
-                <div class="col">
-                <div class="accordion-body">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                        <div class="card shadow-sm">
-                            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="https://firebasestorage.googleapis.com/v0/b/los-cubanitos-2010.appspot.com/o/Productos%2FHamburguesas%2Floscubanitos.jpeg?alt=media&token=453d4de2-dd94-4ab5-950e-8183aef8c775" alt="">
-                
-                            <div class="card-body">
-                              <div class="card-text">
-                                  <h2>Los Cubanitos</h2>
-                                  <p>Doble pan, doble carne, queso, jamón, tocineta, vegetales y salsas (con 4 tequeños de queso)</p>
-                                </div>
-                              <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                  <button type="button" class="btn btn-sm btn-outline-secondary">Añadir al carrito</button>
+      <div class="accordion accordion-flush" id="accordionMenu">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingOne">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseOne" aria-expanded="false" aria-controls="flush-collapseOne">
+              HAMBURGUESAS
+            </button>
+          </h2>
+          <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionMenu">
+            <div id="burger-list" class="accordion-body">
 
-                                </div>
-                                <small class="text-muted">4.03$</small>
-                              </div>
-                            </div>
-                          </div>
-                    </div>
-                </div>
-                </div>
-                <div class="accordion-body">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                        <div class="card shadow-sm">
-                            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="https://firebasestorage.googleapis.com/v0/b/los-cubanitos-2010.appspot.com/o/Productos%2FHamburguesas%2Floscubanitos.jpeg?alt=media&token=453d4de2-dd94-4ab5-950e-8183aef8c775" alt="">
-                
-                            <div class="card-body">
-                                <div class="card-text">
-                                    <h2>Los Cubanitos</h2>
-                                    <p>Doble pan, doble carne, queso, jamón, tocineta, vegetales y salsas (con 4 tequeños de queso)</p>
-                                  </div>
-                              <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                  <button type="button" class="btn btn-sm btn-outline-secondary">Añadir al carrito</button>
-                                </div>
-                                <small class="text-muted">4.03$</small>
-                              </div>
-                            </div>
-                          </div>
-                    </div>
-                </div>
-                <div class="accordion-body">
-                    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                        <div class="card shadow-sm">
-                            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="https://firebasestorage.googleapis.com/v0/b/los-cubanitos-2010.appspot.com/o/Productos%2FHamburguesas%2Floscubanitos.jpeg?alt=media&token=453d4de2-dd94-4ab5-950e-8183aef8c775" alt="">
-                
-                            <div class="card-body">
-                                <div class="card-text">
-                                    <h2>Los Cubanitos</h2>
-                                    <p>Doble pan, doble carne, queso, jamón, tocineta, vegetales y salsas (con 4 tequeños de queso)</p>
-                                  </div>
-                              <div class="d-flex justify-content-between align-items-center">
-                                <div class="btn-group">
-                                  <button type="button" class="btn btn-sm btn-outline-secondary">Añadir al carrito</button>
-                                </div>
-                                <small class="text-muted">4.03$</small>
-                              </div>
-                            </div>
-                          </div>
-                    </div>
-                </div>
-              </div>
-            </div>
-            <div id="swish" class="accordion-item">
-              <h2 class="accordion-header" id="flush-headingTwo">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
-                  Sandwiches
-                </button>
-              </h2>
-              <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body">No hay</div>
-              </div>
-            </div>
-            <div id="combo" class="accordion-item">
-              <h2 class="accordion-header" id="flush-headingThree">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseThree">
-                  Combos
-                </button>
-              </h2>
-              <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body">No hay</div>
-              </div>
-            </div>
-            <div id="postres" class="accordion-item">
-              <h2 class="accordion-header" id="flush-headingThree">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
-                  Postres/Extras
-                </button>
-              </h2>
-              <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body">No hay</div>
-              </div>
-            </div>
-            <div id="bebidas" class="accordion-item">
-              <h2 class="accordion-header" id="flush-headingThree">
-                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseThree">
-                  Bebidas
-                </button>
-              </h2>
-              <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionFlushExample">
-                <div class="accordion-body">No hay</div>
-              </div>
             </div>
           </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingTwo">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseTwo" aria-expanded="false" aria-controls="flush-collapseTwo">
+              SANDWICHES
+            </button>
+          </h2>
+          <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionMenu">
+            <div id="sandwich-list" class="accordion-body">
+
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingThree">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseThree" aria-expanded="false" aria-controls="flush-collapseThree">
+              COMBOS
+            </button>
+          </h2>
+          <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionMenu">
+            <div id="combo-list" class="accordion-body">
+
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingFour">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFour" aria-expanded="false" aria-controls="flush-collapseOne">
+              POSTRES/EXTRAS
+            </button>
+          </h2>
+          <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionMenu">
+            <div id="extra-list" class="accordion-body">
+
+            </div>
+          </div>
+        </div>
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="flush-headingFive">
+            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#flush-collapseFive" aria-expanded="false" aria-controls="flush-collapseFive">
+              BEBIDAS
+            </button>
+          </h2>
+          <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionMenu">
+            <div id="bebida-list" class="accordion-body">
+
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div class="social-container">
       <div class="social-links">
