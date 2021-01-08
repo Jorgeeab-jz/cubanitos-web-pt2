@@ -32,7 +32,7 @@
             </button>
           </h2>
           <div id="flush-collapseOne" class="accordion-collapse collapse" aria-labelledby="flush-headingOne" data-bs-parent="#accordionMenu">
-            <div id="burger-list" class="accordion-body">
+            <div id="burger-list" class="accordion-body row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
             </div>
           </div>
@@ -44,7 +44,7 @@
             </button>
           </h2>
           <div id="flush-collapseTwo" class="accordion-collapse collapse" aria-labelledby="flush-headingTwo" data-bs-parent="#accordionMenu">
-            <div id="sandwich-list" class="accordion-body">
+            <div id="sandwich-list" class="accordion-body row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
             </div>
           </div>
@@ -56,7 +56,7 @@
             </button>
           </h2>
           <div id="flush-collapseThree" class="accordion-collapse collapse" aria-labelledby="flush-headingThree" data-bs-parent="#accordionMenu">
-            <div id="combo-list" class="accordion-body">
+            <div id="combo-list" class="accordion-body row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
             </div>
           </div>
@@ -68,7 +68,7 @@
             </button>
           </h2>
           <div id="flush-collapseFour" class="accordion-collapse collapse" aria-labelledby="flush-headingFour" data-bs-parent="#accordionMenu">
-            <div id="extra-list" class="accordion-body">
+            <div id="extra-list" class="accordion-body row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
             </div>
           </div>
@@ -80,7 +80,7 @@
             </button>
           </h2>
           <div id="flush-collapseFive" class="accordion-collapse collapse" aria-labelledby="flush-headingFive" data-bs-parent="#accordionMenu">
-            <div id="bebida-list" class="accordion-body">
+            <div id="bebida-list" class="accordion-body row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
 
             </div>
           </div>
@@ -96,9 +96,44 @@
       <p class="wpp-number">+58 412-8691901</p>
     </div>
     <div class="cart-btn-container">
-      <button id="open-cart"><i class="fas fa-shopping-cart"></i></button>
+      <button data-bs-toggle="modal" data-bs-target="#CartModal" id="open-cart"><i class="fas fa-shopping-cart"></i></button>
     </div>
-    <div class="background" id="background"></div>
+<!-- Modal -->
+<div class="modal fade" id="CartModal" tabindex="-1" aria-labelledby="CartModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="CartModalLabel"><img src="logo.png" alt="Los Cubanitos 2010"></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div id="cart-body" class="modal-body">
+        <div class="cart-items">
+          <div class="item">
+            <div class="item-info">
+              <div class="item-input">
+                <button type="button" class="less-qty">-</button>
+                <input type="number" name="item-qty" id="item-qty" value="3">
+                <button type="button" class="add-qty">+</button>
+              </div>
+              <h3 class="item-name">Los Cubanitos(Carne)</h3>
+            </div>
+            <div class="item-price">
+              <button class="item-remove">X</button>
+              <p>4.03$</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="total-container">
+        <h2>TOTAL:</h2>
+        <p>12.09$</p>
+      </div>
+      <div class="modal-footer">
+        <button id="send-btn" type="button" class="btn btn-primary">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
-<script src="script.js"></script>
+<script src="inventory.js"></script>
 </html>

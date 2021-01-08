@@ -16,6 +16,12 @@
     height: 75px;
     width: auto;
 }
+.modal-title img {
+    margin: 5px;
+    height: 60px;
+    width: auto;
+    margin-bottom: -0.5rem;
+}
 .menu {
     position: relative;
     font-family: 'Nunito', sans-serif;
@@ -141,11 +147,97 @@ small{
     margin: auto;
     text-align: center;
 }
+.item {
+    display: flex;
+    flex-direction: row;
+    font-family: 'Staatliches',sans-serif;
+}
+.item-img img{
+    margin-top: 0.6rem;
+    width: 45%;
+    height: auto;
+    border-radius: 5%;
+}
+.item-img {
+    text-align: center;
+}
+.item-price {
+    position: absolute;
+    right: 1rem;
+    bottom: 0rem;
+    text-align: end;
+}
+.item-price button {
+    font-family: sans-serif;
+    font-size: 10px;
+    width: 25px;
+    height: 25px;
+    border: 2px solid rgba(0,0,0,0.45);
+    color: rgba(0,0,0,0.45);
+    border-radius: 50%;
+    background: none;
+    outline-style: none;
+}
+.item-price p{
+    margin-top: 1rem;
+}
+.item-input input {
+    margin: 0;
+    text-align: center;
+    width: 30px;
+    background: none;
+    border: none;
+    outline-style: none;
+}
+.item-input button {
+    color: white;
+    background: rgba(0,0,0,0.2);
+    width: 25px;
+    height: 25px;
+    border: none;
+    border-radius: 50%;
+    outline-style: none;
+}
+.item-name {
+    margin: auto;
+    font-size: 15px;
+    margin-top: 1rem;
+    margin-bottom: 0;
+}
+#send-btn {
+    position: ;
+    margin: auto;
+    font-family: 'Staatliches',sans-serif;
+    font-size: 25px;
+    width: 10rem;
+    height: 50px;
+}
+.total-container{
+    font-family: 'Staatliches', sans-serif;
+    display: flex;
+    flex-direction: row;
+    margin: auto;
+    width: 100%;
+    column-gap: 50%;
+    border-top: 1px solid rgba(0,0,0,0.1);
+}
+.total-container h2{
+    text-align: start;
+    margin-left: 0.5rem;
+}
+.total-container p {
+    position: absolute;
+    right: 0.9rem;
+    text-align: end;
+    font-size: 20px;
+}
+.modal-footer {
+    text-align: center;
+    margin: auto;
+}
+.modal-content {
 
-
-
-
-
+}
 
 @media (max-width: 360px) {
     .social-container{
