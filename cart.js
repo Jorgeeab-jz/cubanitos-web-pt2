@@ -67,6 +67,7 @@ const sendOrderBtn = document.getElementById('send-btn');
         let row = e.target.parentElement.parentElement
         row.remove();
         updateTotal();
+        updateCartIcon();
     })
 
     let itemPrice = document.createElement('p')
@@ -133,7 +134,6 @@ const getOrder = (function(){
     }
 
 })();
-
 
 sendOrderBtn.addEventListener('click',()=>{
     let total = Number(document.getElementById('total-display')

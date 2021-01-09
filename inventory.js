@@ -91,7 +91,9 @@ const inventory = (function(){
                 return
             }else{
                 generateCartItem(itemName,((e.target).dataset.price))
+                animateCSS('.cart-btn-container', 'swing');
                 updateTotal();
+                updateCartIcon()
             }
             
         })

@@ -14,6 +14,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <title>Los Cubanitos menú Web</title>
 </head>
 <body>
@@ -97,6 +98,7 @@
     </div>
     <div class="cart-btn-container">
       <button data-bs-toggle="modal" data-bs-target="#CartModal" id="open-cart"><i class="fas fa-shopping-cart"></i></button>
+      <small id="cart-qty-display"></small>
     </div>
 <!-- Modal -->
 <div class="modal fade" id="CartModal" tabindex="-1" aria-labelledby="CartModalLabel" aria-hidden="true">
@@ -138,4 +140,5 @@
 </body>
 <script src="inventory.js"></script>
 <script src="cart.js"></script>
+<script src="animation.js"></script>
 </html>
