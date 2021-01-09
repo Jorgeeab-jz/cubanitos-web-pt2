@@ -247,6 +247,7 @@ small{
     font-size: 25px;
     text-align: center;
 }
+
 @media (max-width: 360px) {
     .social-container{
         flex-direction: column;

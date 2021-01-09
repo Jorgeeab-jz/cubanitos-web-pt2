@@ -57,8 +57,12 @@ const inventory = (function(){
         
         let image = document.createElement('img')
         image.classList.add('card-img-top')
-        image.setAttribute('src', item.img);
-    
+        if (item.img == undefined){
+            image.setAttribute('src', 'placeholder.png');
+        }else{
+            image.setAttribute('src', item.img);
+        }
+        
         let body = document.createElement('div')
         body.classList.add('card-body');
     
