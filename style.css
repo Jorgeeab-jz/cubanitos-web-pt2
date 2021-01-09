@@ -73,17 +73,28 @@
     height: auto;
     margin-top: 5px;
 }
-.btn {
+.card-body button{
+    color: white;
+    width: 90px;
+    height: 40px;
+    font-family: 'Staatliches', sans-serif;
+    display: inline-block;
+    margin-right: 3rem;
     background: #2980b9;
-    color: aliceblue;
+    border: none;
+    border-radius: 10%;
     outline-style: none;
+    font-size: 10px;
 }
-.btn:checked{
-    background: #184d70;
+.card-body button:active{
+    background: #0f4c74;
+    text-shadow: 0px 0px 10px white;
 }
 small{
+    margin-left: 3rem;
+    display: inline-block;
     font-family: 'Staatliches', cursive;
-    font-size: 20px;
+    font-size: 25px;
 }
 .background {
     width: 100%;
@@ -212,11 +223,16 @@ small{
     margin-bottom: 0;
 }
 #send-btn {
+    background: #2980b9;
     margin: auto;
     font-family: 'Staatliches',sans-serif;
     font-size: 25px;
     width: 10rem;
     height: 50px;
+}
+#send-btn:active{
+    background: #0f4c74;
+    text-shadow: 0px 0px 10px white;
 }
 .total-container{
     font-family: 'Staatliches', sans-serif;
@@ -242,9 +258,15 @@ small{
     text-align: center;
     margin: auto;
 }
+.alert-modal{
+    width: 50vw;
+    height: 7rem;
+    text-align: center;
+    margin: auto;
+}
 .alert-msg {
     font-family: 'Staatliches',sans-serif;
-    font-size: 25px;
+    font-size: 15px;
     text-align: center;
 }
 

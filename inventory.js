@@ -84,12 +84,13 @@ const inventory = (function(){
             console.log((e.target).dataset.price, (e.target).dataset.name)
             let items = document.querySelectorAll('.item-name');
             let itemsArr = [...items];
-            if (itemsArr.some(i => i.innerText == (e.target.dataset.name))){
+            let itemName = `${e.target.dataset.prefix} ${e.target.dataset.name}`;
+
+            if (itemsArr.some(i => i.innerText == itemName)){
                 alertModal.toggle();
                 return
             }else{
-                generateCartItem((`${e.target.dataset.prefix} ${e.target.dataset.name}`),
-                ((e.target).dataset.price))
+                generateCartItem(itemName,((e.target).dataset.price))
                 updateTotal();
             }
             

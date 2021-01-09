@@ -2,7 +2,9 @@ const cartBody = document.getElementById('cart-body');
 const alertModal = new bootstrap.Modal(document.getElementById('alertModal'), {
     keyboard: false
   })
-function generateCartItem(name,price) {
+const sendOrderBtn = document.getElementById('send-btn');
+ 
+  function generateCartItem(name,price) {
     let itemContainer = document.createElement('div')
     itemContainer.classList.add('item');
 
@@ -93,3 +95,51 @@ function updateTotal () {
     total = Math.round(total * 100) / 100;
     document.getElementById('total-display').innerText = `${total}$`;
 }
+
+const getOrder = (function(){
+    let message = '';
+
+    const _generateMessage = ()=>{
+        let items = [...document.querySelectorAll('.item')];
+        
+        let order = items.map(item =>{
+            let itemQty = item.querySelector('.item-info .item-input input').value;
+            let itemName = item.querySelector('.item-info h3').innerText;
+            let itemOrder = {
+                qty: itemQty,
+                name: itemName
+            }
+            return itemOrder;
+        },[])
+
+        let orderMessage = order.map(item =>{
+            let line = `\n${item.qty} ${item.name}`;
+            return line;
+        },'')
+
+        let total = document.getElementById('total-display').innerText;
+
+        message = `Pedido:${orderMessage}\nTOTAL: ${total}`;
+    }
+        
+    const sendOrder = ()=> {
+        _generateMessage()
+        let order = encodeURI(message)
+        window.open(`https://wa.me/584128691901?text=${order}`);
+    }
+
+    return {
+        sendOrder
+    }
+
+})();
+
+
+sendOrderBtn.addEventListener('click',()=>{
+    let total = Number(document.getElementById('total-display')
+    .innerText.replace('$',''));
+
+    if (total > 0){
+        getOrder.sendOrder();
+    }
+});
