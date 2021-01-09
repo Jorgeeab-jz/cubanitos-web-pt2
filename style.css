@@ -3,6 +3,7 @@
 * {
     padding: 0;
     margin: 0;
+    font-family: 'Staatliches', sans-serif;
 }
 .top-container {
     position: relative;
@@ -24,7 +25,6 @@
 }
 .menu {
     position: relative;
-    font-family: 'Nunito', sans-serif;
     margin: auto;
     text-align: center;
     margin-top: 1%;
@@ -135,7 +135,7 @@
     margin-left: -0.3rem;
     font-size: 18px;
     color: #2980b9;
-    font-family: 'Staatliches',sans-serif;
+    
 }
 .social-container a {
     position: relative;
@@ -150,7 +150,7 @@
     border-top: 1px solid rgba(0,0,0,0.1);
     display: flex;
     flex-direction: row;
-    font-family: 'Staatliches',sans-serif;
+    
 }
 .item-info {
     position: absolute;
@@ -209,7 +209,7 @@
 #send-btn {
     background: #2980b9;
     margin: auto;
-    font-family: 'Staatliches',sans-serif;
+    
     font-size: 25px;
     width: 10rem;
     height: 50px;
@@ -248,8 +248,7 @@
     text-align: center;
     margin: auto;
 }
-.alert-msg {
-    font-family: 'Staatliches',sans-serif;
+.alert-msg {   
     font-size: 15px;
     text-align: center;
 }
@@ -277,11 +276,11 @@
     bottom: 0.5rem;
 }
 #cart-qty-display {
-    font-family: 'Staatliches',sans-serif;
+    ly: 'Staatliches',sans-serif;
     position: absolute;
     text-align: center;
     right: 2.4rem;
-    bottom: 2.2rem;
+    bottom: 2.4rem;
     color: white;
     text-shadow: 0 0 10px white;
 }
