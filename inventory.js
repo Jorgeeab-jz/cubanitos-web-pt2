@@ -77,7 +77,8 @@ const inventory = (function(){
         let addBtn = document.createElement('button')
         addBtn.classList.add('add-btn')
         addBtn.innerText = 'Añadir al carrito'
-        addBtn.dataset.price = item.price
+        addBtn.dataset.prefix = item.prefix;
+        addBtn.dataset.price = item.price;
         addBtn.dataset.name = item.name;
         addBtn.addEventListener('click', (e)=>{
             console.log((e.target).dataset.price, (e.target).dataset.name)
@@ -87,7 +88,8 @@ const inventory = (function(){
                 alertModal.toggle();
                 return
             }else{
-                generateCartItem(((e.target).dataset.name),((e.target).dataset.price))
+                generateCartItem((`${e.target.dataset.prefix} ${e.target.dataset.name}`),
+                ((e.target).dataset.price))
                 updateTotal();
             }
             
