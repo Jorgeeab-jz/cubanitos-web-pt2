@@ -212,7 +212,6 @@ small{
     margin-bottom: 0;
 }
 #send-btn {
-    position: ;
     margin: auto;
     font-family: 'Staatliches',sans-serif;
     font-size: 25px;
@@ -243,10 +242,11 @@ small{
     text-align: center;
     margin: auto;
 }
-.modal-content {
-
+.alert-msg {
+    font-family: 'Staatliches',sans-serif;
+    font-size: 25px;
+    text-align: center;
 }
-
 @media (max-width: 360px) {
     .social-container{
         flex-direction: column;

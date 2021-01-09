@@ -77,6 +77,16 @@ const inventory = (function(){
         addBtn.dataset.name = item.name;
         addBtn.addEventListener('click', (e)=>{
             console.log((e.target).dataset.price, (e.target).dataset.name)
+            let items = document.querySelectorAll('.item-name');
+            let itemsArr = [...items];
+            if (itemsArr.some(i => i.innerText == (e.target.dataset.name))){
+                alertModal.toggle();
+                return
+            }else{
+                generateCartItem(((e.target).dataset.name),((e.target).dataset.price))
+                updateTotal();
+            }
+            
         })
     
         let price = document.createElement('small')

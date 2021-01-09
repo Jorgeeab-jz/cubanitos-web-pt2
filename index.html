@@ -106,55 +106,14 @@
         <h5 class="modal-title" id="CartModalLabel"><img src="logo.png" alt="Los Cubanitos 2010"></h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <div id="cart-body" class="modal-body">
-        <div class="cart-items">
-          <div class="item">
-            <div class="item-info">
-              <div class="item-input">
-                <button type="button" class="less-qty">-</button>
-                <input type="number" name="item-qty" id="item-qty" value="3">
-                <button type="button" class="add-qty">+</button>
-              </div>
-              <h3 class="item-name">Los Cubanitos (Carne)</h3>
-            </div>
-            <div class="item-price">
-              <button class="item-remove">X</button>
-              <p>4.03$</p>
-            </div>
-          </div>
-          <div class="item">
-            <div class="item-info">
-              <div class="item-input">
-                <button type="button" class="less-qty">-</button>
-                <input type="number" name="item-qty" id="item-qty" value="3">
-                <button type="button" class="add-qty">+</button>
-              </div>
-              <h3 class="item-name">Los Cubanitos (Carne)</h3>
-            </div>
-            <div class="item-price">
-              <button class="item-remove">X</button>
-              <p>4.03$</p>
-            </div>
-          </div>
-          <div class="item">
-            <div class="item-info">
-              <div class="item-input">
-                <button type="button" class="less-qty">-</button>
-                <input type="number" name="item-qty" id="item-qty" value="3">
-                <button type="button" class="add-qty">+</button>
-              </div>
-              <h3 class="item-name">Los Cubanitos (Carne)</h3>
-            </div>
-            <div class="item-price">
-              <button class="item-remove">X</button>
-              <p>4.03$</p>
-            </div>
-          </div>
+      <div class="modal-body">
+        <div id="cart-body" class="cart-items">
+
         </div>
       </div>
       <div class="total-container">
         <h2>TOTAL:</h2>
-        <p>12.09$</p>
+        <p id="total-display">0$</p>
       </div>
       <div class="modal-footer">
         <button id="send-btn" type="button" class="btn btn-primary">Enviar</button>
@@ -163,6 +122,20 @@
   </div>
 </div>
 <div class="background"></div>
+<!-- Vertically centered modal -->
+<div class="modal fade" id="alertModal" tabindex="-1" aria-labelledby="lertModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body alert-msg">
+        <big class="">Eso ya está en el carrito</big>
+      </div>
+    </div>
+  </div>
+</div>
 </body>
 <script src="inventory.js"></script>
+<script src="cart.js"></script>
 </html>
