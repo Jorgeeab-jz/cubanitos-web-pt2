@@ -26,11 +26,12 @@ const inventory = (function(){
     let _sandwich;
     let _combo;
     let _extras;
+    let _dessert;
     let _drinks;
 
-    const _drawProducts = (list,category)=>{
+    const _drawProducts = (list,category,cartPrf)=>{
         for (const [key,value] of Object.entries(list)) {
-            category.append(generateCard(value));
+            category.append(generateCard(value,cartPrf));
         }
     }
 
@@ -38,16 +39,31 @@ const inventory = (function(){
         _productos.child('HAMBURGUESAS')
         .once('value', snap=>{
             _burgers = snap.val();
-            _drawProducts(_burgers,burgerList);
+            _drawProducts(_burgers,burgerList,'Hamburguesa');
         })
         _productos.child('SANDWICHES')
         .once('value', snap=>{
             _sandwich = snap.val();
-            _drawProducts(_sandwich,sandwichList);
+            _drawProducts(_sandwich,sandwichList,'Sandwich');
         })
-    }
+        _productos.child('COMBOS')
+        .once('value', snap=>{
+            _combo = snap.val();
+            _drawProducts(_combo,comboList,'Combo');
+        })
+        _productos.child('EXTRAS')
+        .once('value', snap=>{
+            _extras = snap.val();
+            _drawProducts(_extras,extraList,'');
+        })
+        _productos.child('POSTRES')
+        .once('value', snap=>{
+            _dessert = snap.val();
+            _drawProducts(_dessert,extraList,'');
+        })
+    };
 
-    const generateCard = (item)=>{
+    const generateCard = (item,prf)=>{
         let container = document.createElement('div')
         container.classList.add('col');
         
@@ -77,7 +93,7 @@ const inventory = (function(){
         let addBtn = document.createElement('button')
         addBtn.classList.add('add-btn')
         addBtn.innerText = 'Añadir al carrito'
-        addBtn.dataset.prefix = item.prefix;
+        addBtn.dataset.prefix = prf; 
         addBtn.dataset.price = item.price;
         addBtn.dataset.name = item.name;
         addBtn.addEventListener('click', (e)=>{
