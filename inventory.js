@@ -31,7 +31,7 @@ const inventory = (function(){
 
     const _drawProducts = (list,category,cartPrf)=>{
         for (const [key,value] of Object.entries(list)) {
-            if(value.disp){
+            if(value.disp == "si"){
                 category.append(generateCard(value,cartPrf));
             }else{
                 continue;
