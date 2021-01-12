@@ -58,6 +58,7 @@ const sendOrderBtn = document.getElementById('send-btn');
     itemInfo.append(itemInput,itemName);
 
     let priceContainer = document.createElement('div')
+    priceContainer.dataset.price = price
     priceContainer.classList.add('item-price');
 
     let removeBtn = document.createElement('button')
@@ -71,7 +72,7 @@ const sendOrderBtn = document.getElementById('send-btn');
     })
 
     let itemPrice = document.createElement('p')
-    itemPrice.innerText = `${price}$`;
+    itemPrice.innerText = `${logistic.addDot(price)}.BSS`;
 
     priceContainer.append(removeBtn,itemPrice);
 
@@ -87,14 +88,14 @@ function updateTotal () {
     itemsQty.forEach(item=>{
         let qty = Number(item.value);
         let price = (item.parentElement.parentElement.parentElement
-        .querySelector('.item-price p').innerText).replace('$','');
+        .querySelector('.item-price').dataset.price);
         
         let itemValue = qty * Number(price);
 
         total += itemValue
     })
     total = Math.round(total * 100) / 100;
-    document.getElementById('total-display').innerText = `${total}.Bss`;
+    document.getElementById('total-display').innerText = `${logistic.addDot(total)}.BSS`;
 }
 
 const getOrder = (function(){

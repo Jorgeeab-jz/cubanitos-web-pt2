@@ -119,7 +119,7 @@ const inventory = (function(){
         })
     
         let price = document.createElement('small')
-        price.innerText = `${item.price}.Bss`
+        price.innerText = `${logistic.addDot(item.price)}.Bss`
         price.classList.add('text-muted');
     
     
