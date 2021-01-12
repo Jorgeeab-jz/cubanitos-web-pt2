@@ -31,7 +31,11 @@ const inventory = (function(){
 
     const _drawProducts = (list,category,cartPrf)=>{
         for (const [key,value] of Object.entries(list)) {
-            category.append(generateCard(value,cartPrf));
+            if(value.disp){
+                category.append(generateCard(value,cartPrf));
+            }else{
+                continue;
+            }
         }
     }
 
@@ -115,7 +119,7 @@ const inventory = (function(){
         })
     
         let price = document.createElement('small')
-        price.innerText = `${item.price}$`
+        price.innerText = `${item.price}.Bss`
         price.classList.add('text-muted');
     
     
