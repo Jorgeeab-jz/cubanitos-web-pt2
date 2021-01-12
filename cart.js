@@ -94,7 +94,7 @@ function updateTotal () {
         total += itemValue
     })
     total = Math.round(total * 100) / 100;
-    document.getElementById('total-display').innerText = `${total}$`;
+    document.getElementById('total-display').innerText = `${total}Bss`;
 }
 
 const getOrder = (function(){
