@@ -160,10 +160,12 @@ const cart = (function(){
 
    const sendOrder = ()=>{
        let total = Number(document.getElementById('total-display').dataset.total);
-
-       if(total > 0){
-        window.open(`https://wa.me/584128691901?text=${_getOrder()}`);
-       }
+        console.log(encodeURIComponent(_getOrder()))
+     //  if(total > 0){
+        
+        window.open(`https://wa.me/584128691901?text=${encodeURIComponent(_getOrder())}`);
+        
+    //}
    }
 
     return {
