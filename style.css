@@ -105,7 +105,7 @@
     background-image: url('logobg.png');
     bottom: 0;
     z-index: 10;
-    opacity: 0.1;
+    opacity: 0.07;
 }
 
 #open-cart i {
@@ -143,17 +143,30 @@
     text-align: center;
 }
 .item {
-    margin-top: 5px;
+    margin-top: 10px;
     margin-bottom: -0.5rem;
     display: inline-block;
     width: 100%;
     border-top: 1px solid rgba(0,0,0,0.1);
     display: grid;
     grid-template-columns: repeat(3,auto);
-    column-gap: 0.2rem;
 }
 .item-info {
-    width: 80%;
+    width: 7rem;
+}
+.extras{
+    text-align: start;
+    margin: 0;
+    margin-top: 0.5rem;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(2,auto);
+    column-gap: 0;
+}
+.badge{
+    justify-self: start;
+    margin: 0;
+    padding: 0;
 }
 .item-price {
     text-align: end;
@@ -171,7 +184,7 @@
     outline-style: none;
 }
 .item-price p{
-    font-size: 13px;
+    font-size: 12px;
     margin-top: 0.45rem;
 }
 .item-input {
@@ -237,15 +250,104 @@
     text-align: center;
     margin: auto;
 }
-.alert-modal{
-    width: 50vw;
-    height: 7rem;
+.extra-modal{
+    width: 90%;
     text-align: center;
     margin: auto;
 }
-.alert-msg {   
-    font-size: 15px;
+
+.extra-modal h3{
+    margin-top: 1rem;
+}
+.extra-list{
+    margin-top: 2rem;
+}
+.extra-item{
+    display: grid;
+    grid-template-columns: repeat(3,auto);
+    width: 100%;
+    height: 4rem;
+    margin: auto;
+    margin: 0;
+    border-bottom: 1px dotted rgba(0,0,0,0.2);
+}
+.extra-section{
+    margin-top: 2rem;
+}
+.extra-section h4{
+    text-decoration: underline;
+}
+.extra-item p{
+    width: 4rem;
+    position: relative;
+    font-size: 17px;
+    margin: 0;
+    margin-top: 1.3rem;
+}
+.extra-item span {
+    width: 4rem;
+    margin: 0;
+    margin-top: 1.3rem;
+    margin-left: 1rem;
+    position: relative;
+    color: rgba(0,0,0,0.6);
+}
+.extra-input{
+    position: relative;
+    margin: 0;
+    margin-top: 1.3rem;
+    margin-left: 1rem;
+}
+.extra-input input {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+#cook-note{
+    margin: auto;
+    width: 80%;
+    padding: 5px;
+}
+#cook-note textarea{
+    outline-style: none;
+    width: 100%;
+    height: 3rem;
+    border: 2px solid rgba(0,0,0,0.25);
+}
+.add-to-cart{
+    display: none;
+    position: fixed;
+    z-index: 10000;
+    bottom: 0;
+    width: 100vw;
+    height: 4.5rem;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.25);
+}
+.add-body{
+    margin: auto;
+    width: 70%;
+    margin-top: 0.5rem;
     text-align: center;
+    display: flex;
+    flex-direction: row;
+    column-gap: 0;
+}
+.add-body button{
+    color: white;
+    width: 8rem;
+    height: 3rem;
+    margin: auto;
+    margin-left: 20vw;
+    font-size: 12px;
+}
+.add-body p {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    margin: 0;
+    margin-left: 10px;
+    margin-top: 0.7rem;
+    font-size: 18px;
+    
 }
 .cart-btn-container {
     position: fixed;
@@ -273,41 +375,36 @@
 #cart-qty-display {
     position: absolute;
     text-align: center;
-    right: 2.4rem;
+    right: 2.45rem;
     bottom: 2.4rem;
     color: white;
     text-shadow: 0 0 10px white;
 }
 .extras-container {
-    position: relative;
-    top: 0.2rem;
+    display: inline-block;
+    top: 0rem;
     margin: 0;
     margin: auto;
-    margin-left: -1.9rem;
-    width: 160%;
-    height: 100%;
-    border: 2px dotted rgba(0,0,0,0.2);
-    border-radius: 5%;
+    margin-left: -1.5rem;
+    width: 165px;
+    height: 90%;
+    display: grid;
+    grid-template-columns: repeat(3,auto);
 }
-.extra-ph{
-    position: relative;
-    top: 1.5rem;
-    margin: auto;
+.badge {
+    padding: 2px;
+    margin: 0;
+    margin: 0.1rem;
+    text-shadow: none;
+    width: 50px;
+    height: 15px;
     text-align: center;
 }
-#extra-ph{
-    position: relative;
-    font-size: 1.5rem;
-    background: none;
-    color: rgba(0,0,0,0.2);
-    margin: auto;
-    border: none;
-    text-align: center;
-    background: none;
-    outline-style: none;
+.tocineta{
+    background: #c0392b;
 }
-#extra-ph:active{
-    transform: scale(0.9);
+.cesar{
+    background: #2ecc71;
 }
 @media (max-width: 360px) {
     .social-container{

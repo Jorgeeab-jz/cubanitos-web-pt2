@@ -1,22 +1,52 @@
-const cartBody = document.getElementById('cart-body');
-const alertModal = new bootstrap.Modal(document.getElementById('alertModal'), {
+
+const cart = (function(){
+    
+    const cartBody = document.getElementById('cart-body');
+    const extraModal = new bootstrap.Modal(document.getElementById('extraModal'), {
     keyboard: false
-  })
-const sendOrderBtn = document.getElementById('send-btn');
- 
-  function generateCartItem(name,price) {
+    })
+    
+    const generateCartItem = ()=>{
+    let name = document.getElementById('current-item-name')
+    .innerText;
+    let price = document.getElementById('pre-cart-total')
+    .dataset.price;
+    let cookMessage = document.getElementById('cook-message')
+    .value;
+    let message = '';
+
     let itemContainer = document.createElement('div')
     itemContainer.classList.add('item');
 
     let itemInfo = document.createElement('div')
     itemInfo.classList.add('item-info');
 
+    let extrasContainer = document.createElement('div');
+    extrasContainer.classList.add('extras');
+
+    let extras = document.querySelectorAll('.extra-input input');
+    let extraList = '';
+    extras.forEach(extra=>{
+        if(extra.checked){
+            let extraBadge = document.createElement('span');
+            extraBadge.classList.add('badge');
+            extraBadge.style.background = extra.dataset.color;
+            extraBadge.innerText = extra.dataset.name;
+
+            extrasContainer.append(extraBadge);
+            extraList += `${extra.dataset.name}\n`;
+        }
+    })
+    
+
+
     let itemInput = document.createElement('div')
     itemInput.classList.add('item-input');
 
     let qtyInput = document.createElement('input')
     qtyInput.value = 1;
-    qtyInput.classList.add('qty')
+    qtyInput.dataset.price = price;
+    qtyInput.classList.add('qty');
     qtyInput.setAttribute('type','number')
     qtyInput.addEventListener('change', (e)=>{
         let input = e.target;
@@ -26,6 +56,7 @@ const sendOrderBtn = document.getElementById('send-btn');
             input.value = 99
         }
         updateTotal();
+        buildMessage();
     });
 
     let lessBtn = document.createElement('button')
@@ -35,8 +66,9 @@ const sendOrderBtn = document.getElementById('send-btn');
         let inputN = Number(input.value);
         if (inputN > 1) {
             input.value = inputN - 1;
-            updateTotal();
         }
+        updateTotal();
+        buildMessage();
     });
 
     let addBtn = document.createElement('button')
@@ -46,6 +78,7 @@ const sendOrderBtn = document.getElementById('send-btn');
         let inputN = Number(input.value);
         input.value = inputN + 1;
         updateTotal();
+        buildMessage();
     });
 
     itemInput.append(lessBtn,qtyInput,addBtn);
@@ -58,6 +91,7 @@ const sendOrderBtn = document.getElementById('send-btn');
     itemInfo.append(itemInput,itemName);
 
     let priceContainer = document.createElement('div')
+    priceContainer.dataset.price = price
     priceContainer.classList.add('item-price');
 
     let removeBtn = document.createElement('button')
@@ -70,76 +104,89 @@ const sendOrderBtn = document.getElementById('send-btn');
         updateCartIcon();
     })
 
+    let buildMessage = ()=>{
+        message = `${qtyInput.value} ${itemName.innerText}\n`
+        if(extraList !== ''){
+            message += `Extras:\n${extraList}\n`;
+        }
+        if(cookMessage !== ''){
+            message += `Nota: ${cookMessage}\n`;
+        }
+        message += `Precio: ${logistic.addDot(price)}.BSS\n//////////////////////\n`;
+        itemContainer.dataset.message = message;
+    }
+
     let itemPrice = document.createElement('p')
-    itemPrice.innerText = `${price}$`;
+    itemPrice.innerText = `${logistic.addDot(price)}.BSS`;
 
     priceContainer.append(removeBtn,itemPrice);
 
-    itemContainer.append(itemInfo,priceContainer);
-
+    itemContainer.append(itemInfo,extrasContainer,priceContainer);
+    buildMessage();
     cartBody.append(itemContainer);
-}
+    updateTotal();
+   }
+   
+   const updateTotal = ()=>{
+       let total = 0;
+       let items = document.querySelectorAll('.qty');
 
-function updateTotal () {
-    let total = 0;
-    let itemsQty = document.querySelectorAll('.qty');
+       items.forEach(item =>{
+           let value = Number(item.dataset.price);
+           let qty = Number(item.value);
+           let cost = value * qty;
 
-    itemsQty.forEach(item=>{
-        let qty = Number(item.value);
-        let price = (item.parentElement.parentElement.parentElement
-        .querySelector('.item-price p').innerText).replace('$','');
-        
-        let itemValue = qty * Number(price);
-
-        total += itemValue
-    })
-    total = Math.round(total * 100) / 100;
-    document.getElementById('total-display').innerText = `${total}Bss`;
-}
-
-const getOrder = (function(){
-    let message = '';
-
-    const _generateMessage = ()=>{
-        let items = [...document.querySelectorAll('.item')];
-        
-        let order = items.map(item =>{
-            let itemQty = item.querySelector('.item-info .item-input input').value;
-            let itemName = item.querySelector('.item-info h3').innerText;
-            let itemOrder = {
-                qty: itemQty,
-                name: itemName
-            }
-            return itemOrder;
-        },[])
-
-        let orderMessage = order.map(item =>{
-            let line = `\n${item.qty} ${item.name}`;
-            return line;
-        },'')
-
-        let total = document.getElementById('total-display').innerText;
-
-        message = `Pedido:${orderMessage}\nTOTAL: ${total}`;
+           total += cost;
+       })
+       total = Math.round(total * 100) / 100;
+       let totalDisplay = document.getElementById('total-display');
+       totalDisplay.dataset.total = total;
+       totalDisplay.innerText = `${logistic.addDot(total)}.BSS`;
     }
-        
-    const sendOrder = ()=> {
-        _generateMessage()
-        let order = encodeURI(message)
-        window.open(`https://wa.me/584128691901?text=${order}`);
-    }
+
+   const _getOrder = ()=>{
+       let items = document.querySelectorAll('.item');
+       let message = 'Pedido:\n';
+       let total = document.getElementById('total-display').innerText;
+
+       items.forEach(item=>{
+           message += item.dataset.message;
+       })
+
+       message += `TOTAL: ${total}`;
+
+       return message;
+   }
+
+   const sendOrder = ()=>{
+       let total = Number(document.getElementById('total-display').dataset.total);
+
+       if(total > 0){
+        window.open(`https://wa.me/584128691901?text=${_getOrder()}`);
+       }
+   }
 
     return {
+        extraModal,
+        generateCartItem,
+        updateTotal,
         sendOrder
     }
-
 })();
 
-sendOrderBtn.addEventListener('click',()=>{
-    let total = Number(document.getElementById('total-display')
-    .innerText.replace('$',''));
+function hideAddToCart (){
+    cart.extraModal.toggle()
+    document.getElementById('add-cart-modal').style.display = 'none';
+}
 
-    if (total > 0){
-        getOrder.sendOrder();
-    }
+const addCartBtn = document.getElementById('add-cart-btn');
+addCartBtn.addEventListener('click', ()=>{
+    cart.generateCartItem();
+    cart.updateTotal();
+    hideAddToCart();
+    animateCSS('.cart-btn-container', 'swing');
+    updateCartIcon()
 });
+
+const sendOrderBtn = document.getElementById('send-btn');
+sendOrderBtn.addEventListener('click',cart.sendOrder);
