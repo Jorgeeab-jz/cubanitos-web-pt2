@@ -161,11 +161,12 @@ const cart = (function(){
    const sendOrder = ()=>{
        let total = Number(document.getElementById('total-display').dataset.total);
         console.log(encodeURIComponent(_getOrder()))
-     //  if(total > 0){
+       
+        if(total > 0){
         
-        window.open(`https://wa.me/584128691901?text=${encodeURIComponent(_getOrder())}`);
+            window.open(`https://wa.me/584128691901?text=${encodeURIComponent(_getOrder())}`);
         
-    //}
+        }
    }
 
     return {
