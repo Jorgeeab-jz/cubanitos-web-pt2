@@ -33,7 +33,9 @@
     box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.3);
     z-index: 20;
 }
-
+.modal-footer{
+    
+}
 #flush-headingOne{
     background: rgba(213, 98, 91, 1);
 }
@@ -81,7 +83,7 @@
     width: 90px;
     height: 40px;
     display: inline-block;
-    margin-right: 3rem;
+    margin-left: 3rem;
     background: #2980b9;
     border: none;
     border-radius: 10%;
@@ -93,7 +95,7 @@
     text-shadow: 0px 0px 10px white;
 }
 .card-body small{
-    margin-left: 3rem;
+    margin-right: 3rem;
     display: inline-block;
     font-size: 20px;
 }
@@ -250,6 +252,11 @@
     text-align: center;
     margin: auto;
 }
+.add-footer{
+    background: white;
+    position: sticky;
+    bottom: 1px;
+}
 .extra-modal{
     width: 90%;
     text-align: center;
@@ -280,30 +287,31 @@
 .extra-item p{
     width: 4rem;
     position: relative;
-    font-size: 17px;
+    font-size: 15px;
     margin: 0;
     margin-top: 1.3rem;
-}
-.extra-item span {
-    width: 4rem;
-    margin: 0;
-    margin-top: 1.3rem;
-    margin-left: 1rem;
-    position: relative;
-    color: rgba(0,0,0,0.6);
 }
 .extra-input{
     position: relative;
     margin: 0;
+    text-align: end;
     margin-top: 1.3rem;
-    margin-left: 1rem;
 }
 .extra-input input {
     width: 1.2rem;
     height: 1.2rem;
 }
+.add-price{
+    text-align: end;
+    margin-top: 1.3rem;
+}
+.add-price span{
+    text-align: end;
+    color: rgba(0,0,0,0.45);
+}
 #cook-note{
     margin: auto;
+    margin-top: 1rem;
     width: 80%;
     padding: 5px;
 }
@@ -399,6 +407,9 @@
     width: 50px;
     height: 15px;
     text-align: center;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.7);
+    overflow: hidden;
+    
 }
 .tocineta{
     background: #c0392b;

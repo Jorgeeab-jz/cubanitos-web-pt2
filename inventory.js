@@ -24,6 +24,7 @@ const inventory = (function(){
     const drinkList = document.getElementById('bebida-list');
     const _cubanitosDB = firebase.database();
     const _productos = _cubanitosDB.ref().child('PRODUCTOS');
+    let _productCheck;
     let _burgers;
     let _sandwich;
     let _combo;
@@ -32,6 +33,19 @@ const inventory = (function(){
     let _drinks;
     let _addDish;
     let _addSauce;
+
+    const _checkPrices = ()=>{
+        let checkObject;
+
+        _productos.once('value',snap=>{
+            checkObject = snap.val()
+        })
+
+        if(checkObject !== _productCheck){
+            location.reload();
+        }
+        
+    }
 
     const _drawProducts = (list,category,cartPrf,addList)=>{
         for (const [key,value] of Object.entries(list)) {
@@ -71,12 +85,12 @@ const inventory = (function(){
 
     const _getAdds = ()=>{
         _productos.child('ADICIONALES')
-        .child('PLATOS').once('value',snap=>{
+        .child('PLATOS').on('value',snap=>{
             _addDish = snap.val();
             console.log(_addDish);
         })
         _productos.child('ADICIONALES')
-        .child('SALSAS').once('value',snap=>{
+        .child('SALSAS').on('value',snap=>{
             _addSauce = snap.val();
             console.log(_addSauce);
         })
@@ -89,9 +103,12 @@ const inventory = (function(){
 
         let name = document.createElement('p');
         name.innerText = item.name
-
+        
+        let priceContainer = document.createElement('div');
+        priceContainer.classList.add('add-price');
         let price = document.createElement ('span');
         price.innerText = `+${logistic.addDot(item.price)}.BSS`;
+        priceContainer.append(price);
         let itemInput = document.createElement('div')
         itemInput.classList.add('form-check');
         itemInput.classList.add('extra-input')
@@ -105,7 +122,7 @@ const inventory = (function(){
 
         itemInput.append(qtyInput);
 
-        container.append(name,price,itemInput);
+        container.append(name,priceContainer,itemInput);
 
         return container;
     };
@@ -164,28 +181,29 @@ const inventory = (function(){
     };
 
     const _getList = ()=>{
+        burgerList.innerHTML = '';
         _productos.child('HAMBURGUESAS')
-        .once('value', snap=>{
+        .on('value', snap=>{
             _burgers = snap.val();
             _drawProducts(_burgers,burgerList,'Hamburguesa','solid');
         })
         _productos.child('SANDWICHES')
-        .once('value', snap=>{
+        .on('value', snap=>{
             _sandwich = snap.val();
             _drawProducts(_sandwich,sandwichList,'Sandwich','solid');
         })
         _productos.child('COMBOS')
-        .once('value', snap=>{
+        .on('value', snap=>{
             _combo = snap.val();
             _drawProducts(_combo,comboList,'Combo');
         })
         _productos.child('EXTRAS')
-        .once('value', snap=>{
+        .on('value', snap=>{
             _extras = snap.val();
             _drawProducts(_extras,extraList,'');
         })
         _productos.child('POSTRES')
-        .once('value', snap=>{
+        .on('value', snap=>{
             _dessert = snap.val();
             _drawProducts(_dessert,extraList,'');
         })
@@ -229,12 +247,12 @@ const inventory = (function(){
             let thisBtn = e.target
             console.log((e.target).dataset.price, (e.target).dataset.name)
             let itemName = `${thisBtn.dataset.prefix} ${thisBtn.dataset.name}`;
+           // _checkPrices();
             _clearNote();
             _setPreCartItem(thisBtn);
             switchPreCart(thisBtn);
             _getTotalCost();
             cart.extraModal.toggle();
-            document.getElementById('add-cart-modal').style.display = 'block';
         })
     
         let price = document.createElement('small')
@@ -242,7 +260,7 @@ const inventory = (function(){
         price.classList.add('text-muted');
     
     
-        body.append(title,info,addBtn,price);
+        body.append(title,info,price,addBtn);
         card.append(image,body);
         container.append(card);
     
@@ -250,11 +268,12 @@ const inventory = (function(){
     };
 
     const drawMenu = ()=>{
-        _productos.once('value')
-        .then(snap=>{
+        _productos.on('value',snap=>{
+            _productCheck = snap.val();
             _getList()
             _getAdds()
-        }).catch(console.log('Error'))
+        })
+
     };
 
     return {

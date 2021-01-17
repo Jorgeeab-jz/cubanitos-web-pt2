@@ -28,7 +28,3 @@ function updateCartIcon() {
     }
 }
 
-document.getElementById('extraModal').addEventListener('hide.bs.modal',function(){
-  document.getElementById('add-cart-modal').style.display = 'none';
-  console.log('yo')
-})

@@ -11,7 +11,6 @@ const logistic = (function(){
     }
     
     
-    
     return {
         addDot,
         appendExtra

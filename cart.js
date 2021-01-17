@@ -179,7 +179,6 @@ const cart = (function(){
 
 function hideAddToCart (){
     cart.extraModal.toggle()
-    document.getElementById('add-cart-modal').style.display = 'none';
 }
 
 const addCartBtn = document.getElementById('add-cart-btn');
