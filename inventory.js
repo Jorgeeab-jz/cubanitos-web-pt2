@@ -24,7 +24,6 @@ const inventory = (function(){
     const drinkList = document.getElementById('bebida-list');
     const _cubanitosDB = firebase.database();
     const _productos = _cubanitosDB.ref().child('PRODUCTOS');
-    let _productCheck;
     let _burgers;
     let _sandwich;
     let _combo;
@@ -34,14 +33,9 @@ const inventory = (function(){
     let _addDish;
     let _addSauce;
 
-    const _checkPrices = ()=>{
-        let checkObject;
-
-        _productos.once('value',snap=>{
-            checkObject = snap.val()
-        })
-
-        if(checkObject !== _productCheck){
+    const checkOnline = ()=>{
+        
+        if(!navigator.onLine){
             location.reload();
         }
         
@@ -176,7 +170,7 @@ const inventory = (function(){
             _drawExtra(_addDish,solidList);
             _drawExtra(_addSauce,sauceList);
         }else{
-            addContainer.innerHTML = 'adadd'
+            addContainer.innerHTML = ''
         }
     };
 
@@ -187,16 +181,22 @@ const inventory = (function(){
             _burgers = snap.val();
             _drawProducts(_burgers,burgerList,'Hamburguesa','solid');
         })
+
+        sandwichList.innerHTML = '';
         _productos.child('SANDWICHES')
         .on('value', snap=>{
             _sandwich = snap.val();
             _drawProducts(_sandwich,sandwichList,'Sandwich','solid');
         })
+
+        comboList.innerHTML = '';
         _productos.child('COMBOS')
         .on('value', snap=>{
             _combo = snap.val();
             _drawProducts(_combo,comboList,'Combo');
         })
+
+        extraList.innerHTML = '';
         _productos.child('EXTRAS')
         .on('value', snap=>{
             _extras = snap.val();
@@ -247,7 +247,7 @@ const inventory = (function(){
             let thisBtn = e.target
             console.log((e.target).dataset.price, (e.target).dataset.name)
             let itemName = `${thisBtn.dataset.prefix} ${thisBtn.dataset.name}`;
-           // _checkPrices();
+            checkOnline();
             _clearNote();
             _setPreCartItem(thisBtn);
             switchPreCart(thisBtn);

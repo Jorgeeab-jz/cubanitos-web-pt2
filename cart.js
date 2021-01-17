@@ -191,4 +191,7 @@ addCartBtn.addEventListener('click', ()=>{
 });
 
 const sendOrderBtn = document.getElementById('send-btn');
-sendOrderBtn.addEventListener('click',cart.sendOrder);
+sendOrderBtn.addEventListener('click',()=>{
+    cart.sendOrder();
+    inventory.checkOnline();
+}); 

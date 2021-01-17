@@ -28,3 +28,10 @@ function updateCartIcon() {
     }
 }
 
+const accBtn = document.querySelectorAll('.accordion-button');
+
+accBtn.forEach(btn=>{
+  btn.addEventListener('click', (e)=>{
+    document.querySelector('.menu-title').scrollIntoView(true);
+  })
+})
