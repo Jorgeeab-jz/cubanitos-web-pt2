@@ -33,6 +33,16 @@ const inventory = (function(){
     let _addDish;
     let _addSauce;
 
+    const _showMenu = ()=>{
+        const menu = document.getElementById('accordionMenu');
+        const loading = document.getElementById('loading');
+        const title = document.querySelector('.menu-title');
+
+        title.style.display = 'block';
+        loading.style.display = 'none';
+        menu.style.display = 'block';
+    }
+
     const checkOnline = ()=>{
         
         if(!navigator.onLine){
@@ -272,6 +282,8 @@ const inventory = (function(){
             _productCheck = snap.val();
             _getList()
             _getAdds()
+            animateCSS('.menu', 'backInDown');
+            _showMenu();
         })
 
     };

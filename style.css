@@ -52,6 +52,7 @@
     background: rgba(253, 138, 131, 1);
 }
 .menu-title {
+    display: none;
     color: #2980b9;
     font-family: 'Staatliches', cursive;
     margin: auto;
@@ -416,6 +417,20 @@
 }
 .cesar{
     background: #2ecc71;
+}
+#accordionMenu{
+    display: none;
+    transition-duration: 0.5s;
+}
+#loading{
+    position: absolute;
+    width: 6rem;
+    height: 6rem;
+    margin: auto;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 @media (max-width: 360px) {
     .social-container{
