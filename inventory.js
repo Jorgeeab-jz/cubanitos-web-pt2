@@ -67,16 +67,16 @@ const inventory = (function(){
 
     const _solidPreCart = ()=>{
         _clearNote();
-        let extras = document.createElement('div');
-        let extrasTitle = document.createElement('h4');
+        let extras = document.createElement('details');
+        let extrasTitle = document.createElement('summary');
         extras.setAttribute('id','solid');
         extras.classList.add('extra-section');
         extrasTitle.innerText = 'Extras';
 
         extras.append(extrasTitle);
         
-        let sauce = document.createElement('div');
-        let sauceTitle = document.createElement('h4');
+        let sauce = document.createElement('details');
+        let sauceTitle = document.createElement('summary');
         sauce.setAttribute('id','sauce');
         sauce.classList.add('extra-section');
         sauceTitle.innerText = 'Salsas';
@@ -101,7 +101,7 @@ const inventory = (function(){
     };
 
     const _generateAdd = (item) => {
-        let container = document.createElement('div');
+        let container = document.createElement('li');
         container.classList.add('extra-item');
         container.dataset.price = item.price;
 
@@ -248,21 +248,24 @@ const inventory = (function(){
     
         let addBtn = document.createElement('button')
         addBtn.classList.add('add-btn')
-        addBtn.innerText = 'Añadir al carrito'
+        addBtn.innerHTML = '<i class="fas fa-cart-plus"></i>';
         addBtn.dataset.prefix = prf; 
         addBtn.dataset.price = item.price;
         addBtn.dataset.name = item.name;
         addBtn.dataset.addList = addList;
         addBtn.addEventListener('click', (e)=>{
-            let thisBtn = e.target
-            console.log((e.target).dataset.price, (e.target).dataset.name)
-            let itemName = `${thisBtn.dataset.prefix} ${thisBtn.dataset.name}`;
-            checkOnline();
+            let thisBtn = e.target.closest('button')
+            if(logistic.turnSign()){
+                checkOnline();
             _clearNote();
             _setPreCartItem(thisBtn);
             switchPreCart(thisBtn);
             _getTotalCost();
             cart.extraModal.toggle();
+            }else{
+                alert('Estamos cerrados.');
+            }
+            
         })
     
         let price = document.createElement('small')

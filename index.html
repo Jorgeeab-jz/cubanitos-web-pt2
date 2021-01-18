@@ -30,6 +30,12 @@
         <div class="top">
             <img src="logo.png" alt="Los Cubanitos 2010"> 
         </div>
+        <div class="closed-sign">
+          <h2>Cerrado</h2>
+        </div>
+        <div class="open-sign">
+          <h2>Abierto</h2>
+        </div>
     </header>
     <h1 class="menu-title">MENÚ</h1>
     <div class="menu">
@@ -158,8 +164,13 @@
   </div>
   <div class="modal-footer add-footer">
     <div class="add-body">
-      <button id="add-cart-btn" class="btn btn-primary">Añadir al carrito</button>
-      <p id="pre-cart-total"></p>
+      <div class="pre-cart-total">
+        <span>Precio:</span>
+        <p id="pre-cart-total"></p>
+      </div>
+      <button id="add-cart-btn" class="btn btn-primary">
+        <i class="fas fa-cart-arrow-down"></i>
+      </button>
     </div>
   </div>
 </div>

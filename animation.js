@@ -15,7 +15,8 @@ const animateCSS = (element, animation, prefix = 'animate__') =>{
 
     node.addEventListener('animationend', handleAnimationEnd, {once: true});
 })};
-
+const accBtn = document.querySelectorAll('.accordion-button');
+const cartBtn = document.querySelector('.cart-btn-container');
 const cartQtyDisplay = document.getElementById('cart-qty-display');
 
 
@@ -28,10 +29,22 @@ function updateCartIcon() {
     }
 }
 
-const accBtn = document.querySelectorAll('.accordion-button');
-
 accBtn.forEach(btn=>{
   btn.addEventListener('click', (e)=>{
     document.querySelector('.menu-title').scrollIntoView(true);
   })
 })
+
+function hideAddToCart (){
+  cart.extraModal.toggle()
+}
+
+function displayCartBtn (){
+  let items = [...document.querySelectorAll('.item')];
+
+  if (items.length > 0){
+    cartBtn.style.display = 'block';
+  }else{
+    cartBtn.style.display = 'none';
+  }
+}

@@ -60,9 +60,9 @@ const cart = (function(){
     });
 
     let lessBtn = document.createElement('button')
-    lessBtn.innerText = '-'
+    lessBtn.innerHTML = '<i class="fas fa-minus-circle"></i>';
     lessBtn.addEventListener('click', (e)=>{
-        let input = e.target.parentElement.querySelector('input');
+        let input = e.target.closest('div').querySelector('input');
         let inputN = Number(input.value);
         if (inputN > 1) {
             input.value = inputN - 1;
@@ -72,9 +72,9 @@ const cart = (function(){
     });
 
     let addBtn = document.createElement('button')
-    addBtn.innerText = '+'
+    addBtn.innerHTML = '<i class="fas fa-plus-circle"></i>';
     addBtn.addEventListener('click', (e)=>{
-        let input = e.target.parentElement.querySelector('input');
+        let input = e.target.closest('div').querySelector('input');
         let inputN = Number(input.value);
         input.value = inputN + 1;
         updateTotal();
@@ -95,13 +95,14 @@ const cart = (function(){
     priceContainer.classList.add('item-price');
 
     let removeBtn = document.createElement('button')
-    removeBtn.innerText = 'X';
+    removeBtn.innerHTML = '<i class="fas fa-times"></i>';
     removeBtn.classList.add('item-remove')
     removeBtn.addEventListener('click',(e)=>{
-        let row = e.target.parentElement.parentElement
+        let row = e.target.closest('.item');
         row.remove();
         updateTotal();
         updateCartIcon();
+        displayCartBtn();
     })
 
     let buildMessage = ()=>{
@@ -177,9 +178,7 @@ const cart = (function(){
     }
 })();
 
-function hideAddToCart (){
-    cart.extraModal.toggle()
-}
+
 
 const addCartBtn = document.getElementById('add-cart-btn');
 addCartBtn.addEventListener('click', ()=>{
@@ -187,7 +186,8 @@ addCartBtn.addEventListener('click', ()=>{
     cart.updateTotal();
     hideAddToCart();
     animateCSS('.cart-btn-container', 'swing');
-    updateCartIcon()
+    updateCartIcon();
+    displayCartBtn();
 });
 
 const sendOrderBtn = document.getElementById('send-btn');
