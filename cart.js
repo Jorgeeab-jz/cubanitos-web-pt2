@@ -1,6 +1,5 @@
 
 const cart = (function(){
-    
     const cartBody = document.getElementById('cart-body');
     const extraModal = new bootstrap.Modal(document.getElementById('extraModal'), {
     keyboard: false
@@ -139,6 +138,12 @@ const cart = (function(){
 
            total += cost;
        })
+
+       
+
+       if (del.checked){
+           total += Number(del.dataset.price);
+       }
        total = Math.round(total * 100) / 100;
        let totalDisplay = document.getElementById('total-display');
        totalDisplay.dataset.total = total;
@@ -154,8 +159,15 @@ const cart = (function(){
            message += item.dataset.message;
        })
 
-       message += `TOTAL: ${total}`;
+       if(del.checked){
+           message += `Modo de entrega: Delivery   
+           ${logistic.addDot(Number(del.dataset.price))}\n______________________\n`;
+       }else if(pU.checked){
+           message += `Modo de entrega: Pick-Up\n______________________\n`
+       }
 
+       message += `TOTAL: ${total}`;
+       console.log(message)
        return message;
    }
 
@@ -195,3 +207,8 @@ sendOrderBtn.addEventListener('click',()=>{
     cart.sendOrder();
     inventory.checkOnline();
 }); 
+
+const del = document.getElementById('delivery');
+const pU = document.getElementById('pickUp');
+del.addEventListener('change',cart.updateTotal);
+pU.addEventListener('change',cart.updateTotal);

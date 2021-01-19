@@ -352,6 +352,7 @@ const inventory = (function(){
 
     return {
         drawMenu,
+        checkOnline
     }
 
 })();

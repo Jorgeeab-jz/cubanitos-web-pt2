@@ -155,16 +155,20 @@
       </div>
       <div class="delivery-mode">
         <div class="form-check">
-          <input class="form-check-input" type="radio" name="delivery-mode" id="pickUp">
-          <label class="form-check-label" for="pickUp">
+          <input class="form-check-input" type="radio" name="delivery-mode" id="pickUp" checked>
+          <label class="form-check-label delivery-container" for="pickUp">
             Pick-Up
+            <span>+0.BSS</span>
           </label>
         </div>
-        <div class="form-check">
-          <input class="form-check-input" type="radio" name="delivery-mode" id="delivery" checked>
-          <label class="form-check-label" for="delivery">
+        <div class="form-check delivery-wrap">
+          <input class="form-check-input" type="radio" name="delivery-mode" id="delivery">
+          <label class="form-check-label delivery-container" for="delivery">
             Delivery
+            <span id="delivery-price">+2.000.000.BSS</span>
+            <span id="del-note">*Disponible para pedidos a partir de 10.000.000.BSS</span>
           </label>
+          
         </div>
       </div>
       <div class="total-container">

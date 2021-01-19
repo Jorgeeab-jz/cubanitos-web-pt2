@@ -543,6 +543,35 @@
     border-top: 2px solid white;
     margin-bottom: 1rem;
 }
+.delivery-container{
+    display: grid;
+    columns: auto;
+}
+.delivery-wrap{
+    margin-top: 1rem;
+}
+.delivery-mode{
+    width: 100%;
+    border-top: 1px solid rgba(0,0,0,0.16);
+    display: flex;
+    margin: auto;
+    margin-bottom: 1rem;
+    flex-direction: row;
+    text-align: center;
+    height: 5rem;
+}
+.delivery-mode .form-check{
+    margin: auto;
+    height: 45px;
+}
+.delivery-container span{
+    font-size: 13px;
+    color: rgba(0,0,0,0.7);
+}
+#del-note{
+    font-size: 9px;
+    width: 6rem;
+}
 @media (max-width: 360px) {
     .social-container{
         flex-direction: column;

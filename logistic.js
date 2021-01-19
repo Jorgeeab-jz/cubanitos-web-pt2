@@ -25,12 +25,16 @@ const logistic = (function(){
         }
 
     }
+    
     logInfo.on('value',snap=>{
         info = snap.val()
         console.log(snap.val());
-        turnSign()
+        turnSign();
+        document.getElementById('delivery')
+        .dataset.price = info.delivery.price;
+        console.log(info)
+            
     })
-    
     
     const addDot = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
@@ -43,9 +47,8 @@ const logistic = (function(){
     return {
         addDot,
         appendExtra,
-        turnSign
+        turnSign,
+        info
     }
 
 })();
-
-
