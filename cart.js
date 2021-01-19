@@ -4,7 +4,9 @@ const cart = (function(){
     const extraModal = new bootstrap.Modal(document.getElementById('extraModal'), {
     keyboard: false
     })
+    let info;
     
+
     const generateCartItem = ()=>{
     let name = document.getElementById('current-item-name')
     .innerText;
@@ -139,7 +141,13 @@ const cart = (function(){
            total += cost;
        })
 
-       
+       if(total >= Number(del.dataset.min)){
+           del.disabled = false;
+       }else{
+           del.disabled = true;
+           del.checked = false;
+           pU.checked = true;
+       }
 
        if (del.checked){
            total += Number(del.dataset.price);

@@ -25,14 +25,26 @@ const logistic = (function(){
         }
 
     }
+
+    const _setDelivInfo = ()=>{
+        let note = document.getElementById('del-note');
+        let delPrice = document.getElementById('delivery-price');
+        
+        del.dataset.price = info.delivery.price;
+        del.dataset.min = info.delivery.min;
+
+        note.innerText +=`${addDot(info.delivery.min)}.BSS`;
+        delPrice.innerText += `${addDot(info.delivery.price)}.BSS`;
+    }
     
     logInfo.on('value',snap=>{
+        let del = document.getElementById('delivery')
+
         info = snap.val()
         console.log(snap.val());
         turnSign();
-        document.getElementById('delivery')
-        .dataset.price = info.delivery.price;
-        console.log(info)
+        _setDelivInfo()
+        console.log(info,'log')
             
     })
     
