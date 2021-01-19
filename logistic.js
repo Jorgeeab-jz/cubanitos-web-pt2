@@ -7,10 +7,17 @@ const logistic = (function(){
     let info;
     
     const turnSign = () =>{
-        if(info.abierto.status == 'si'){
+        let today = new Date
+        console.log(today.getDay(),today.getHours())
+        if(info.abierto.status == 'si' || ((today.getHours() > 7 
+        && today.getHours() < 17) && (today.getDay() > 0))){
             openSign.style.display = 'block';
             closedSign.style.display = 'none';
             return true;
+        }else if(info.abierto.status !== 'si'){
+            closedSign.style.display = 'block';
+            openSign.style.display = 'none';
+            return false;
         }else{
             closedSign.style.display = 'block';
             openSign.style.display = 'none';

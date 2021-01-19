@@ -22,6 +22,9 @@ const inventory = (function(){
     const comboList = document.getElementById('combo-list');
     const extraList = document.getElementById('extra-list');
     const drinkList = document.getElementById('bebida-list');
+    const shakeList = document.getElementById('batidos');
+    const merenList = document.getElementById('merengadas');
+    const hotList = document.getElementById('calientes');
     const _cubanitosDB = firebase.database();
     const _productos = _cubanitosDB.ref().child('PRODUCTOS');
     let _burgers;
@@ -30,8 +33,12 @@ const inventory = (function(){
     let _extras;
     let _dessert;
     let _drinks;
+    let _shakes;
+    let _meren;
+    let _hotD;
     let _addDish;
     let _addSauce;
+    let _addDrinks;
 
     const _showMenu = ()=>{
         const menu = document.getElementById('accordionMenu');
@@ -87,6 +94,17 @@ const inventory = (function(){
         
     };
 
+    const _drinksPreCart = ()=>{
+        let extras = document.createElement('div');
+        let extrasTitle = document.createElement('h2');
+        extras.setAttribute('id','drink');
+        extras.classList.add('extra-section');
+        extrasTitle.innerText = 'Extras';
+
+        extras.append(extrasTitle);
+        addContainer.append(extras);
+    }
+
     const _getAdds = ()=>{
         _productos.child('ADICIONALES')
         .child('PLATOS').on('value',snap=>{
@@ -97,6 +115,12 @@ const inventory = (function(){
         .child('SALSAS').on('value',snap=>{
             _addSauce = snap.val();
             console.log(_addSauce);
+        })
+
+        _productos.child('ADICIONALES')
+        .child('BEBIDAS').on('value',snap=>{
+            _addDrinks = snap.val();
+            console.log(_addDrinks);
         })
     };
 
@@ -179,8 +203,14 @@ const inventory = (function(){
         
             _drawExtra(_addDish,solidList);
             _drawExtra(_addSauce,sauceList);
-        }else{
+        }else if(item.dataset.addList == 'drink'){
             addContainer.innerHTML = ''
+            _drinksPreCart();
+            let extraList = document.getElementById('drink');
+
+            _drawExtra(_addDrinks,extraList);
+        }else{
+            addContainer.innerHTML = '';
         }
     };
 
@@ -217,6 +247,35 @@ const inventory = (function(){
             _dessert = snap.val();
             _drawProducts(_dessert,extraList,'');
         })
+
+        drinkList.innerHTML = '';
+        _productos.child('BEBIDAS').child('frias')
+        .on('value', snap=>{
+            _drinks = snap.val();
+            _drawProducts(_drinks,drinkList,'');
+        })
+
+        shakeList.innerHTML = '';
+        _productos.child('BEBIDAS').child('batidos')
+        .on('value', snap=>{
+            _shakes = snap.val();
+            _drawProducts(_shakes,shakeList,'Batido','drink');
+        })
+
+        merenList.innerHTML = '';
+        _productos.child('BEBIDAS').child('merengadas')
+        .on('value', snap=>{
+            _meren = snap.val();
+            _drawProducts(_meren,merenList,'Merengada');
+        })
+
+        hotList.innerHTML = '';
+        _productos.child('BEBIDAS').child('calientes')
+        .on('value', snap=>{
+            _hotD = snap.val();
+            _drawProducts(_hotD,hotList,'');
+        })
+        
     };
 
     const _generateCard = (item,prf,addList)=>{
