@@ -110,18 +110,15 @@ const inventory = (function(){
         _productos.child('ADICIONALES')
         .child('PLATOS').on('value',snap=>{
             _addDish = snap.val();
-            console.log(_addDish);
         })
         _productos.child('ADICIONALES')
         .child('SALSAS').on('value',snap=>{
             _addSauce = snap.val();
-            console.log(_addSauce);
         })
 
         _productos.child('ADICIONALES')
         .child('BEBIDAS').on('value',snap=>{
             _addDrinks = snap.val();
-            console.log(_addDrinks);
         })
     };
 

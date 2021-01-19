@@ -8,7 +8,6 @@ const logistic = (function(){
     
     const turnSign = () =>{
         let today = new Date
-        console.log(today.getDay(),today.getHours())
         if(info.abierto.status == 'si' || ((today.getHours() > 7 
         && today.getHours() < 17) && (today.getDay() > 0))){
             openSign.style.display = 'block';
@@ -38,14 +37,9 @@ const logistic = (function(){
     }
     
     logInfo.on('value',snap=>{
-        let del = document.getElementById('delivery')
-
         info = snap.val()
-        console.log(snap.val());
         turnSign();
-        _setDelivInfo()
-        console.log(info,'log')
-            
+        _setDelivInfo()     
     })
     
     const addDot = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

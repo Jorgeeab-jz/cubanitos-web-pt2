@@ -12,7 +12,7 @@ productos.once('value')
 .then(snap=>{
     getList();
 }).catch(function (err) {
-    console.log('Error', err.code);
+    console.log('Cargando', err.code);
 });
 
 

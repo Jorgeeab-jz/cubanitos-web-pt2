@@ -174,13 +174,11 @@ const cart = (function(){
        }
 
        message += `TOTAL: ${total}`;
-       console.log(message)
        return message;
    }
 
    const sendOrder = ()=>{
        let total = Number(document.getElementById('total-display').dataset.total);
-        console.log(encodeURIComponent(_getOrder()))
        
         if(total > 0){
         
