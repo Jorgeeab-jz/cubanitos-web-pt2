@@ -16,10 +16,10 @@ firebase.analytics();
 
 const inventory = (function(){
     const addContainer = document.getElementById('add-list');
-    const preCart = document.getElementById('pre-cart');
     const burgerList = document.getElementById('burger-list');
     const sandwichList = document.getElementById('sandwich-list');
     const comboList = document.getElementById('combo-list');
+    const maxList = document.getElementById('combo-max-list');
     const extraList = document.getElementById('extra-list');
     const drinkList = document.getElementById('bebida-list');
     const shakeList = document.getElementById('batidos');
@@ -30,6 +30,7 @@ const inventory = (function(){
     let _burgers;
     let _sandwich;
     let _combo;
+    let _maxi;
     let _extras;
     let _dessert;
     let _drinks;
@@ -233,7 +234,14 @@ const inventory = (function(){
         _productos.child('COMBOS')
         .on('value', snap=>{
             _combo = snap.val();
-            _drawProducts(_combo,comboList,'Combo');
+            _drawProducts(_combo,comboList,'Combo','solid');
+        })
+
+        maxList.innerHTML = '';
+        _productos.child('COMBOSMAX')
+        .on('value', snap=>{
+            _maxi = snap.val();
+            _drawProducts(_maxi,maxList,'Combo',);
         })
 
         extraList.innerHTML = '';

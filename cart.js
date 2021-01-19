@@ -4,8 +4,7 @@ const cart = (function(){
     const extraModal = new bootstrap.Modal(document.getElementById('extraModal'), {
     keyboard: false
     })
-    let info;
-    
+ 
 
     const generateCartItem = ()=>{
     let name = document.getElementById('current-item-name')
