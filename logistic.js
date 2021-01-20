@@ -9,7 +9,7 @@ const logistic = (function(){
     const turnSign = () =>{
         let today = new Date
         if(info.abierto.status == 'si' || ((today.getHours() > 7 
-        && today.getHours() < 17) && (today.getDay() > 0))){
+        && today.getHours() < 16) && (today.getDay() > 0))){
             openSign.style.display = 'block';
             closedSign.style.display = 'none';
             return true;
