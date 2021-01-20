@@ -293,6 +293,7 @@ const inventory = (function(){
         
         let image = document.createElement('img')
         image.classList.add('card-img-top')
+        
         if (item.img == undefined){
             image.setAttribute('src', 'placeholder.png');
         }else{
@@ -363,3 +364,6 @@ const inventory = (function(){
 })();
 
 inventory.drawMenu();
+window.oncontextmenu = (e)=>{
+    e.preventDefault();
+}

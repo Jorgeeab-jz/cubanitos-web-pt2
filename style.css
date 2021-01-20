@@ -508,12 +508,6 @@
     overflow: hidden;
     
 }
-.tocineta{
-    background: #c0392b;
-}
-.cesar{
-    background: #2ecc71;
-}
 #accordionMenu{
     display: none;
     transition-duration: 0.5s;
