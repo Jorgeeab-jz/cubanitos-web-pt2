@@ -1,5 +1,4 @@
 const logistic = (function(){
-    let currentOrder = {};
     const fbDb =  firebase.database();
     const logInfo = fbDb.ref().child('LOGISTICA');
     const openSign = document.querySelector('.open-sign');
@@ -32,8 +31,8 @@ const logistic = (function(){
         del.dataset.price = info.delivery.price;
         del.dataset.min = info.delivery.min;
 
-        note.innerText +=`${addDot(info.delivery.min)}.BSS`;
-        delPrice.innerText += `${addDot(info.delivery.price)}.BSS`;
+        note.innerText =`*Disponible para pedidos a partir de ${addDot(info.delivery.min)}.BSS`;
+        delPrice.innerText = `+${addDot(info.delivery.price)}.BSS`;
     }
     
     logInfo.on('value',snap=>{

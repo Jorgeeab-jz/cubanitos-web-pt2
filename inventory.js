@@ -291,15 +291,94 @@ const inventory = (function(){
         card.classList.add('card')
         card.classList.add('shadow-sm');
         
-        let image = document.createElement('img')
-        image.classList.add('card-img-top')
-        
-        if (item.img == undefined){
-            image.setAttribute('src', 'placeholder.png');
+        let carousel = document.createElement('div');
+        carousel.setAttribute('id',`carousel${prf+item.name}control`)
+        carousel.classList.add('carousel')
+        carousel.classList.add('slide');
+        carousel.dataset.bsRide = 'carousel';
+        carousel.dataset.bsPause = 'false';
+
+        let innerCar = document.createElement('div');
+        innerCar.classList.add('carousel-inner');
+
+        if ((typeof item.img) == 'string'){
+            let imageContainer = document.createElement('div');
+            imageContainer.classList.add('carousel-item')
+            imageContainer.classList.add('active');
+
+            let image = document.createElement('img');
+            image.src = item.img;
+            imageContainer.append(image);
+            innerCar.append(imageContainer);
+        }else if((typeof item.img) == 'object'){
+            let indicateCont = document.createElement('ol');
+            indicateCont.classList.add('carousel-indicators');
+            for(let i in item.img){
+
+                let indLi = document.createElement('li');
+                indLi.dataset.bsTarget = `carousel${prf+item.name}control`;
+                indLi.dataset.bsSlideTo = i;
+
+                let imageContainer = document.createElement('div');
+                imageContainer.classList.add('carousel-item');
+    
+                let image = document.createElement('img');
+                image.classList.add('d-block');
+                image.classList.add('w-100');
+                image.src = item.img[i];
+                imageContainer.append(image);
+
+                if(i == 0){
+                    imageContainer.classList.add('active');
+                    indLi.classList.add('active');
+                }
+                
+                indicateCont.append(indLi);
+                carousel.append(indicateCont);
+                
+                innerCar.append(imageContainer);
+                
+                let prevCont = document.createElement('a');
+                prevCont.classList.add('carousel-control-prev');
+                prevCont.href = `#carousel${prf+item.name}control`;
+                prevCont.setAttribute('role', 'button');
+                prevCont.dataset.bsSlide = 'prev';
+                let prevIcon = document.createElement('span');
+                prevIcon.classList.add('carousel-control-prev-icon');
+                prevIcon.setAttribute('aria-hidden','true');
+                let prevHid = document.createElement('span');
+                prevHid.classList.add('visually-hidden');
+                prevHid.innerText = 'Anterior';
+                prevCont.append(prevIcon,prevHid);
+
+                let nextCont = document.createElement('a');
+                nextCont.classList.add('carousel-control-next');
+                nextCont.href = `#carousel${prf+item.name}control`;
+                nextCont.setAttribute('role', 'button');
+                nextCont.dataset.bsSlide = 'next';
+                let nextIcon = document.createElement('span');
+                nextIcon.classList.add('carousel-control-next-icon');
+                nextIcon.setAttribute('aria-hidden','true');
+                let nextHid = document.createElement('span');
+                nextHid.classList.add('visually-hidden');
+                nextHid.innerText = 'Siguiente';
+                nextCont.append(nextIcon,nextHid);
+
+                innerCar.append(prevCont,nextCont);
+             }
         }else{
-            image.setAttribute('src', item.img);
+            let imageContainer = document.createElement('div');
+            imageContainer.classList.add('carousel-item')
+            imageContainer.classList.add('active');
+
+            let image = document.createElement('img');
+            image.src = 'placeholder.png';
+            imageContainer.append(image);
+            innerCar.append(imageContainer);
         }
         
+        carousel.append(innerCar);
+
         let body = document.createElement('div')
         body.classList.add('card-body');
     
@@ -339,7 +418,7 @@ const inventory = (function(){
     
     
         body.append(title,info,price,addBtn);
-        card.append(image,body);
+        card.append(carousel,body);
         container.append(card);
     
         return container;
@@ -364,6 +443,3 @@ const inventory = (function(){
 })();
 
 inventory.drawMenu();
-window.oncontextmenu = (e)=>{
-    e.preventDefault();
-}
