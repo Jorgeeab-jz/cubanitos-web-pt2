@@ -18,6 +18,7 @@ const inventory = (function () {
     const addContainer = document.getElementById('add-list');
     const cakeList = document.getElementById('cake-list');
     const coldList = document.getElementById('cold-list');
+    const cookieList = document.getElementById('cookie-list');
     const comboList = document.getElementById('combo-list');
 
     /*
@@ -33,8 +34,8 @@ const inventory = (function () {
     const _productos = _vickysDB.ref().child('PRODUCTOS');
     let _cakes;
     let _cold;
+    let _cookie;
     let _combo;
-    
     let _maxi;
     let _extras;
     let _dessert;
@@ -45,7 +46,7 @@ const inventory = (function () {
     let _addDish;
     let _addSauce;
     let _addDrinks;
-    
+
     const _showMenu = () => {
         const menu = document.getElementById('accordionMenu');
         const loading = document.getElementById('loading');
@@ -65,7 +66,7 @@ const inventory = (function () {
     }
 
     const _drawProducts = (list, category, cartPrf, addList) => {
-        
+
         for (const [key, value] of Object.entries(list)) {
             category.append(_generateCard(value, cartPrf, addList));
         }
@@ -157,7 +158,7 @@ const inventory = (function () {
         return container;
     };
 
-    
+
     const _drawExtra = (items, list) => {
         for (const [key, value] of Object.entries(items)) {
             if (value.disp == 'si') {
@@ -167,7 +168,7 @@ const inventory = (function () {
             }
         }
     };
-    
+
 
     const _setPreCartItem = (item) => {
         let itemName = `${item.dataset.prefix} ${item.dataset.name}`;
@@ -223,16 +224,23 @@ const inventory = (function () {
         _productos.child('TORTAS')
             .on('value', snap => {
                 _cakes = snap.val();
-                _drawProducts(_cakes, cakeList, '', 'solid');
-            })
-        /*
-        sandwichList.innerHTML = '';
-        _productos.child('SANDWICHES')
-            .on('value', snap => {
-                _sandwich = snap.val();
-                _drawProducts(_sandwich, sandwichList, 'Sandwich', 'solid');
+                _drawProducts(_cakes, cakeList, 'Torta', 'solid');
             })
 
+        coldList.innerHTML = '';
+        _productos.child('FRIOS')
+            .on('value', snap => {
+                _cold = snap.val();
+                _drawProducts(_cold, coldList, '', 'solid');
+            })
+
+        cookieList.innerHTML = '';
+        _productos.child('GALLETAS')
+            .on('value', snap => {
+                _cookie = snap.val();
+                _drawProducts(_cookie, cookieList, 'Galleta', 'solid');
+            })
+        /*
         comboList.innerHTML = '';
         _productos.child('COMBOS')
             .on('value', snap => {
@@ -346,7 +354,7 @@ const inventory = (function () {
 
                 let prevCont = document.createElement('a');
                 prevCont.classList.add('carousel-control-prev');
-                prevCont.href = `#carousel${prf + item.name}control`;
+                prevCont.href = `#carousel${(prf + item.name).replace(/\s/g, '')}control`;
                 prevCont.setAttribute('role', 'button');
                 prevCont.dataset.bsSlide = 'prev';
                 let prevIcon = document.createElement('span');
