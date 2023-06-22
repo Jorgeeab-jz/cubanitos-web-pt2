@@ -7,15 +7,11 @@ const logistic = (function(){
     
     const turnSign = () =>{
         let today = new Date
-        if(info.abierto.status == 'si' || ((today.getHours() > 7 
-        && today.getHours() < 16) && (today.getDay() > 0))){
+        if(((today.getHours() > 7 
+        && today.getHours() < 20) && (today.getDay() > 0))){
             openSign.style.display = 'block';
             closedSign.style.display = 'none';
             return true;
-        }else if(info.abierto.status !== 'si'){
-            closedSign.style.display = 'block';
-            openSign.style.display = 'none';
-            return false;
         }else{
             closedSign.style.display = 'block';
             openSign.style.display = 'none';
@@ -23,7 +19,7 @@ const logistic = (function(){
         }
 
     }
-
+    /*
     const _setDelivInfo = ()=>{
         let note = document.getElementById('del-note');
         let delPrice = document.getElementById('delivery-price');
@@ -34,11 +30,11 @@ const logistic = (function(){
         note.innerText =`*Disponible para pedidos a partir de ${addDot(info.delivery.min)}.BSS`;
         delPrice.innerText = `+${addDot(info.delivery.price)}.BSS`;
     }
-    
+    */
     logInfo.on('value',snap=>{
         info = snap.val()
         turnSign();
-        _setDelivInfo()     
+        //_setDelivInfo()     
     })
     
     const addDot = (n) => n.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");

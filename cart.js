@@ -1,9 +1,10 @@
 
+
 const cart = (function(){
     const cartBody = document.getElementById('cart-body');
-    const extraModal = new bootstrap.Modal(document.getElementById('extraModal'), {
+   /* const extraModal = new bootstrap.Modal(document.getElementById('extraModal'), {
     keyboard: false
-    })
+    })*/
  
 
     const generateCartItem = ()=>{
@@ -26,6 +27,7 @@ const cart = (function(){
 
     let extras = document.querySelectorAll('.extra-input input');
     let extraList = '';
+    /*
     extras.forEach(extra=>{
         if(extra.checked){
             let extraBadge = document.createElement('span');
@@ -37,7 +39,7 @@ const cart = (function(){
             extraList += `${extra.dataset.name}\n`;
         }
     })
-    
+    */
 
 
     let itemInput = document.createElement('div')
@@ -113,12 +115,12 @@ const cart = (function(){
         if(cookMessage !== ''){
             message += `Nota: ${cookMessage}\n`;
         }
-        message += `Precio: ${logistic.addDot(price)}.BSS\n//////////////////////\n`;
+        message += `Precio: ${logistic.addDot(price)} $\n//////////////////////\n`;
         itemContainer.dataset.message = message;
     }
 
     let itemPrice = document.createElement('p')
-    itemPrice.innerText = `${logistic.addDot(price)}.BSS`;
+    itemPrice.innerText = `${logistic.addDot(price)} $`;
 
     priceContainer.append(removeBtn,itemPrice);
 
@@ -154,7 +156,7 @@ const cart = (function(){
        total = Math.round(total * 100) / 100;
        let totalDisplay = document.getElementById('total-display');
        totalDisplay.dataset.total = total;
-       totalDisplay.innerText = `${logistic.addDot(total)}.BSS`;
+       totalDisplay.innerText = `${logistic.addDot(total)} $`;
     }
 
    const _getOrder = ()=>{
@@ -182,16 +184,27 @@ const cart = (function(){
        
         if(total > 0){
         
-            window.open(`https://wa.me/584128691901?text=${encodeURIComponent(_getOrder())}`);
+            window.open(`https://wa.me/584121822719?text=${encodeURIComponent(_getOrder())}`);
         
         }
+   }
+
+   const AddItemToCart = () => 
+   {
+       generateCartItem();
+       updateTotal();
+       hideAddToCart();
+       animateCSS('.cart-btn-container', 'swing');
+       updateCartIcon();
+       displayCartBtn();
    }
 
     return {
         extraModal,
         generateCartItem,
         updateTotal,
-        sendOrder
+        sendOrder,
+        AddItemToCart
     }
 })();
 
@@ -199,12 +212,7 @@ const cart = (function(){
 
 const addCartBtn = document.getElementById('add-cart-btn');
 addCartBtn.addEventListener('click', ()=>{
-    cart.generateCartItem();
-    cart.updateTotal();
-    hideAddToCart();
-    animateCSS('.cart-btn-container', 'swing');
-    updateCartIcon();
-    displayCartBtn();
+    AddItemToCart();
 });
 
 const sendOrderBtn = document.getElementById('send-btn');
