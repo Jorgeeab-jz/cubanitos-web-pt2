@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Berkshire+Swash&display=swap');
+
 * {
     padding: 0;
     margin: 0;
@@ -11,7 +13,7 @@
     grid-template-columns: repeat(2,auto);
     z-index: 20;
     height: 80px;
-    background: rgb(194, 225, 247);
+    background: rgb(253, 85, 178);
     box-shadow: inset 0 3px 6px rgba(0,0,0,0.16), 0 4px 6px rgba(0,0,0,0.25);
 }
 .top img {
@@ -71,22 +73,22 @@
 }
 
 #flush-headingOne{
-    background: rgba(213, 98, 91, 1);
+    background: rgb(253, 85, 178);
 }
 #flush-headingTwo{
-    background: rgba(102, 166, 81, 1);
+    background: rgb(52, 225, 255);
 }
-#flush-headingMax {
-    background: rgba(213, 98, 91, 1);
+#flush-headingThree{
+    background: rgb(235, 229, 144);
 }
 #flush-headingFour{
-    background: rgba(102, 166, 81, 1);
+    background: rgb(184, 123, 45);
 }
 
 .menu-title {
     display: none;
-    color: #2980b9;
-    font-family: 'Staatliches', cursive;
+    color: #494949;
+    font-family: 'Berkshire Swash', cursive;
     margin: auto;
     text-align: center;
     font-size: 45px;
@@ -158,7 +160,9 @@
     opacity: 0.07;
 }
 
+
 #open-cart i {
+    margin-top: 10px;
     margin-left: -5px;
 }
 #open-cart:active {
@@ -174,7 +178,7 @@
     column-gap: 8px;
 }
 .social-container a {
-    color: #2980b9;
+    color: #494949;
     margin: auto;
     text-align: center;
     font-size: 40px;
@@ -184,7 +188,7 @@
     margin-top: 1.2rem;
     margin-left: -0.3rem;
     font-size: 18px;
-    color: #2980b9;
+    color: #494949;
     
 }
 .social-container a {
@@ -278,7 +282,7 @@
     margin-bottom: 0;
 }
 #send-btn {
-    background: #2980b9;
+    background: rgb(253, 85, 178);
     margin: auto;
     
     font-size: 25px;
@@ -463,7 +467,7 @@
     color: white;
     font-size: 35px;
     text-align: center;
-    background: #2980b9;
+    background: rgb(253, 85, 178);
     box-shadow: 3px 3px 10px rgba(0,0,0,0.7);
     border: none;
     height: 70px;
@@ -479,7 +483,7 @@
     position: absolute;
     text-align: center;
     right: 2.45rem;
-    bottom: 2.4rem;
+    bottom: 2.25rem;
     color: #2980b9;
     text-shadow: 0 0 10px white;
 }
